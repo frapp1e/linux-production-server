@@ -23,3 +23,8 @@
 ## Fail2ban
 - Protección contra ataques de fuerza bruta en SSH.
 - Baneo automático tras 3 intentos fallidos.
+
+## Servicio Web
+- El servidor utiliza Apache HTTPD como servicio web principal.  
+- El servicio se encuentra habilitado y gestionado mediante systemd, con el firewall configurado y SELinux en modo enforcing.
+
