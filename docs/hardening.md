@@ -28,3 +28,19 @@
 - El servidor utiliza Apache HTTPD como servicio web principal.  
 - El servicio se encuentra habilitado y gestionado mediante systemd, con el firewall configurado y SELinux en modo enforcing.
 
+### Hardening Básico
+
+- Propietario y permisos web:
+    chown -R apache:apache /srv/webapp
+    chmod -R 750 /srv/webapp
+
+- SELinux:
+    semanage fcontext -a -t httpd_sys_content_t "/srv/webapp(/.*)?"
+    restorecon -Rv /srv/webapp
+
+- Firewall:
+    firewall-cmd --permanent --add-service=http
+    firewall-cmd --permanent --add-service=https
+    firewall-cmd --reload
+
+
