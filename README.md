@@ -3,7 +3,7 @@
 ---
 
 ## 🧱 Entorno
-- Sistema operativo: Rocky Linux 9 / Ubuntu Server 22.04
+- Sistema operativo: Rocky Linux 9 
 - Usuario principal: `fran` (sudo)
 - Servicios: Nginx, Apache, Prometheus, Node Exporter, Grafana
 - Seguridad: SSH por clave, root deshabilitado, fail2ban, firewall, SELinux/AppArmor
@@ -51,3 +51,24 @@
   - Prometheus (`/etc/prometheus`)
   - Sistema (`/etc` y `/home`)
 - Almacenamiento en `/backups` con estructura por tipo:
+/backups/apache/
+/backups/prometheus/
+/backups/system/
+
+- Automatizado con **systemd timer** y service
+- Restauración documentada
+
+---
+
+## ⚙️ Automatización
+- Scripts Bash organizados en `/scripts/`
+- Servicios systemd para iniciar Prometheus, Node Exporter y backups automáticamente
+- Timers para ejecutar tareas periódicas
+
+---
+
+## 🪵 Logs e incidencias
+- Uso de `journalctl` para revisar logs de servicios
+- Rotación de logs implementada
+- Ejemplo de gestión de un servicio caído y recuperación
+
