@@ -1,11 +1,13 @@
-### Node Exporter
+## Monitorización
 
-Se descarga dinámicamente la última versión disponible usando la API de GitHub:
+Se ha desplegado un sistema de monitorización basado en Prometheus y Node Exporter.
 
-curl -s https://api.github.com/repos/prometheus/node_exporter/releases/latest
-| grep "browser_download_url"
-| grep "linux-amd64.tar.gz"
+- Node Exporter recoge métricas del sistema (CPU, memoria, disco, red).
+- Prometheus realiza el scraping cada 15 segundos.
+- Servicios gestionados mediante systemd.
+- Configuración validada con promtool antes de aplicar cambios.
 
-Se creó un servicio systemd para que Node Exporter arranque con el sistema.
-systemctl enable --now node_exporter
-Node Exporter escucha por defecto en http://localhost:9100
+Targets monitorizados:
+- localhost:9090 (Prometheus)
+- localhost:9100 (Node Exporter)
+
