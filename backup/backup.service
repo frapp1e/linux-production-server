@@ -1,0 +1,14 @@
+[Unit]
+Description=Daily System Backup
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/backup_system.sh
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
+
